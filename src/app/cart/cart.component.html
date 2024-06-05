@@ -1,0 +1,59 @@
+<div class="container">
+  <h2>Shopping Cart</h2>
+  <div class="cart-wrapper">
+    <div *ngIf="items.length === 0">Your cart is empty.</div>
+    <div
+      *ngFor="let item of items"
+      class="cart-item d-flex flex-row justify-content-center align-items-center mb-3"
+    >
+      <div class="img-div">
+        <img
+          [src]="item.product.image"
+          alt="{{ item.product.title }}"
+          class="cart-item-image"
+        />
+      </div>
+      <div class="cart-item-info text-start text-wrap">
+        <div>
+          <h5>{{ item.product.title }}</h5>
+          <p>${{ item.product.price }}</p>
+          <div class="quantity">
+            <button
+              class="btn btn-secondary"
+              (click)="updateQuantity(item.product.id, item.quantity - 1)"
+            >
+              -
+            </button>
+            <input
+              type="number"
+              [(ngModel)]="item.quantity"
+              (change)="updateQuantity(item.product.id, item.quantity)"
+            />
+            <button
+              class="btn btn-secondary"
+              (click)="updateQuantity(item.product.id, item.quantity + 1)"
+            >
+              +
+            </button>
+          </div>
+        </div>
+
+        <button
+          class="btn btn-danger mt-2 remove"
+          (click)="removeItem(item.product.id)"
+        >
+          X
+        </button>
+      </div>
+    </div>
+    <div class="total text-end">
+      <p>Total: ${{ totalPrice }}</p>
+    </div>
+    <div class="cart-actions text-end">
+      <button class="btn btn-danger" (click)="clearCart()">Clear Cart</button>
+      <button class="btn btn-success ms-2" (click)="checkout()">
+        Checkout
+      </button>
+    </div>
+  </div>
+</div>

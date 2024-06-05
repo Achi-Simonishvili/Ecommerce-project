@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    margin: 40px;
+    color: white;
+  }
+
+  button {
+    width: 623px;
+    color: #8167a9;
+    border-color: #8167a9;
+    margin-bottom: 150px;
+  }
+
+  button:hover {
+    background-color: #8167a9;
+    color: white;
+  }
+}

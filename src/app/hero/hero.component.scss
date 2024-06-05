@@ -1,0 +1,180 @@
+.slider-container {
+  position: relative;
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+
+  .slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+
+    .slide {
+      min-width: 100%;
+      box-sizing: border-box;
+      position: relative;
+
+      .image-container {
+        position: relative;
+
+        img {
+          width: 100%;
+          height: 100vh;
+          display: block;
+          object-position: center;
+          object-fit: cover;
+        }
+
+        .caption {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: white;
+          background-color: rgba(0, 0, 0, 0.5);
+          padding: 20px;
+          border-radius: 5px;
+          text-align: center;
+
+          h1 {
+            margin: 0 0 10px;
+            font-size: 75px;
+            font-weight: 700;
+            font-family: "Cormorant Garamond", serif;
+            line-height: 1.2em;
+            text-transform: capitalize;
+            font-style: italic;
+          }
+
+          p {
+            margin: 0;
+          }
+
+          button {
+            background-color: rgb(129, 103, 169);
+            color: white;
+            position: relative;
+            overflow: hidden;
+
+            span {
+              background-color: transparent;
+            }
+
+            &:before {
+              content: "";
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              background-color: rgb(43, 45, 66);
+              transform: translateX(-100%);
+              transition: 0.5s ease-in-out;
+            }
+
+            &:hover {
+              span {
+                z-index: 9999999;
+                position: relative;
+              }
+
+              &:before {
+                transform: translateX(0);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .prev,
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgb(129, 103, 169);
+  }
+
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .slider-container {
+    .slider {
+      .slide {
+        .image-container {
+          .caption {
+            h1 {
+              font-size: 55px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .slider-container {
+    .slider {
+      .slide {
+        .image-container {
+          .caption {
+            h1 {
+              font-size: 45px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .slider-container {
+    .slider {
+      .slide {
+        .image-container {
+          .caption {
+            h1 {
+              font-size: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .slider-container {
+    .slider {
+      .slide {
+        .image-container {
+          .caption {
+            p {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<div class="container">
+  <ul
+    class="d-flex flex-row justify-content-center align-items-center flex-wrap"
+  >
+    <li *ngFor="let item of products">
+      <div class="normal" (click)="goToProductDetail(item.id)">
+        <img [src]="item.image" alt="{{ item.title }}" />
+      </div>
+      <div
+        class="info d-flex flex-column justify-content-around align-items-start"
+      >
+        <h3>{{ item.title }}</h3>
+        <p>Price: {{ item.price }}$</p>
+      </div>
+    </li>
+  </ul>
+</div>

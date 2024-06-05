@@ -1,0 +1,190 @@
+<nav class="navbar fixed-top navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="home">
+      <a href="#" class="hover-target"><span>shop</span>logo</a>
+    </a>
+    <button
+      class="navbar-toggler d-lg-none"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasNavbar"
+      aria-controls="offcanvasNavbar"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="offcanvasNavbar"
+      aria-labelledby="offcanvasNavbarLabel"
+    >
+      <div class="offcanvas-header">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="home" routerLinkActive="text-light"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="all-products"
+              routerLinkActive="text-light"
+              >Products</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="cart" routerLinkActive="text-light"
+              ><a
+                class="nav-link cart"
+                routerLink="cart"
+                routerLinkActive="text-light"
+                ><svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7 18C5.89543 18 5 18.8954 5 20C5 21.1046 5.89543 22 7 22C8.10457 22 9 21.1046 9 20C9 18.8954 8.10457 18 7 18ZM1 2H4L7.68 13.39C7.8391 13.9278 8.18695 14.3955 8.66361 14.71C9.14027 15.0245 9.71629 15.1681 10.3 15.11H19.25C19.7811 15.1148 20.2895 14.8914 20.6615 14.4934C21.0335 14.0955 21.2371 13.5604 21.22 13.01L20.28 6H6.26L5.62 3H1V2ZM16 18C14.8954 18 14 18.8954 14 20C14 21.1046 14.8954 22 16 22C17.1046 22 18 21.1046 18 20C18 18.8954 17.1046 18 16 18Z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <span *ngIf="cartItemCount > 0">{{ cartItemCount }}</span></a
+              ></a
+            >
+          </li>
+        </ul>
+        <div class="text-end d-flex">
+          <button
+            type="button"
+            class="btn btn-outline-light me-2 flex-grow-1"
+            routerLink="/login"
+          >
+            Login
+          </button>
+          <button type="button" class="btn btn-warning flex-grow-1">
+            Sign-up
+          </button>
+        </div>
+        <form
+          class="d-flex input-group flex-nowrap mt-3"
+          (submit)="onSearch($event)"
+        >
+          <input
+            class="form-control"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            [(ngModel)]="searchQuery"
+            name="searchQuery"
+          />
+          <button class="btn search" type="submit">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="#fff"
+              viewBox="0 0 256 256"
+            >
+              <path
+                d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+              ></path>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="normal-navbar d-none d-lg-flex align-items-center">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row gap-2">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="home" routerLinkActive="text-light"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="all-products"
+            routerLinkActive="text-light"
+            >Products</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link cart"
+            routerLink="cart"
+            routerLinkActive="text-light"
+            ><svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 18C5.89543 18 5 18.8954 5 20C5 21.1046 5.89543 22 7 22C8.10457 22 9 21.1046 9 20C9 18.8954 8.10457 18 7 18ZM1 2H4L7.68 13.39C7.8391 13.9278 8.18695 14.3955 8.66361 14.71C9.14027 15.0245 9.71629 15.1681 10.3 15.11H19.25C19.7811 15.1148 20.2895 14.8914 20.6615 14.4934C21.0335 14.0955 21.2371 13.5604 21.22 13.01L20.28 6H6.26L5.62 3H1V2ZM16 18C14.8954 18 14 18.8954 14 20C14 21.1046 14.8954 22 16 22C17.1046 22 18 21.1046 18 20C18 18.8954 17.1046 18 16 18Z"
+                fill="currentColor"
+              />
+            </svg>
+            <span *ngIf="cartItemCount > 0">{{ cartItemCount }}</span></a
+          >
+        </li>
+      </ul>
+      <form class="d-flex input-group flex-nowrap" (submit)="onSearch($event)">
+        <input
+          class="form-control"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          [(ngModel)]="searchQuery"
+          name="searchQuery"
+        />
+        <button class="btn search" type="submit">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="#fff"
+            viewBox="0 0 256 256"
+          >
+            <path
+              d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+            ></path>
+          </svg>
+        </button>
+      </form>
+      <div class="text-end ms-3" *ngIf="!currentUser">
+        <button
+          type="button"
+          class="btn btn-outline-light me-2"
+          routerLink="/login"
+        >
+          Login
+        </button>
+      </div>
+      <div class="text-end ms-3" *ngIf="currentUser">
+        <button
+          type="button"
+          class="btn btn-outline-light me-2"
+          routerLink="/login"
+          (click)="logout()"
+        >
+          Logout
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
